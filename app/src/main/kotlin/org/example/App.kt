@@ -11,17 +11,30 @@ fun main() = runBlocking {
     actualizarAsistencia()
 }
 
+
+
+suspend fun esperarServicio(nombreServicio: String, tiempoMs: Long) {
+    println("$nombreServicio esperando respuesta...")
+    delay(tiempoMs)
+    println("$nombreServicio respondió")
+}
+
+
+
 suspend fun sincronizarEstudiantes() {
     println("Iniciando sincronización de estudiantes...")
-    delay(3000)
+    esperarServicio("Estudiantes", 3000)
     println("Sincronización de estudiantes terminada.")
 }
 
+
+
 suspend fun consultarCursos() {
     println("Iniciando consulta de cursos...")
-    delay(2000)
+    esperarServicio("Cursos", 2000)
     println("Consulta de cursos terminada.")
 }
+
 
 suspend fun descargarEvaluaciones() {
     println("Iniciando descarga de evaluaciones...")
